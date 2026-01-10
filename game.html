@@ -1,0 +1,121 @@
+﻿<!doctype html>
+<html lang="ko">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <meta name="referrer" content="strict-origin-when-cross-origin">
+  <title>YT Overlay Rhythm 6K (Easy Chart + Timeline Editor)</title>
+    <link rel="stylesheet" href="game.css?after" />
+</head>
+<body>
+  <div class="wrap">
+    <!-- 왼쪽: 최소 UI -->
+    <div class="card leftOnly">
+      <h1>리듬게임</h1>
+      <div class="onlyBtns">
+        <button id="playBtn">Play</button>
+        <button class="btn2" id="pauseBtn">Pause</button>
+        <button class="btn2" id="restartBtn">Restart</button>
+      </div>
+
+      <!-- 숨겨진 기본값들(난이도/판정 등) -->
+      <div class="hideLeftExtras">
+        <!-- 속도 낮춤(쉬움) -->
+        <input id="speed" type="number" min="200" max="2400" value="620" />
+        <!-- 판정 넉넉하게 -->
+        <input id="wPerfect" type="number" value="85" />
+        <input id="wGreat" type="number" value="150" />
+        <input id="wGood" type="number" value="220" />
+        <input id="wMiss" type="number" value="320" />
+      </div>
+
+      <div class="sub">
+        기본 키: S D F J K L
+        
+      </div>
+      
+    </div>
+
+    <!-- 오른쪽: 플레이어 + 에디터 -->
+    <div class="stage">
+      <div class="card" id="playerWrap">
+        <div id="player"></div>
+
+        <div class="overlay" id="overlay">
+          <div class="playSurface" id="playSurface">
+            <canvas id="fxCanvas"></canvas>
+            <div class="lanes" id="lanes"></div>
+            <div class="spawnline"></div>
+            <div class="hitline"></div>
+            <div class="judgeOverlay" id="judgeOverlay"></div>
+
+            <div class="resultScreen" id="resultScreen">
+              <div class="resultCard">
+                <div class="resultTitle">RESULT</div>
+                <div class="resultBig">
+                  <div class="bigBox">
+                    <div class="k">SCORE</div>
+                    <div class="v" id="resScore">0</div>
+                  </div>
+                  <div class="bigBox">
+                    <div class="k">HIT</div>
+                    <div class="v" id="resHit">0</div>
+                  </div>
+                </div>
+                <div class="resultSmall">
+                  <span class="chip">MISS <b id="resMiss" style="margin-left:6px">0</b></span>
+                  <span class="chip">ACC <b id="resAcc" style="margin-left:6px">0.00%</b></span>
+                  <span class="chip">MAX COMBO <b id="resMaxCombo" style="margin-left:6px">0</b></span>
+                </div>
+                <div class="resultActions">
+                  <button id="resRestartBtn">Restart</button>
+                  <button class="btn2" id="resCloseBtn">Close</button>
+                </div>
+              </div>
+            </div>
+
+          </div>
+        </div>
+
+        <div class="hud">
+          <div class="pill"><span>TIME</span><b id="timeTxt">0.000</b></div>
+          <div class="pill"><span>SCORE</span><b id="scoreTxt">0</b></div>
+          <div class="pill"><span>COMBO</span><b id="comboTxt">0</b></div>
+          <div class="pill"><span>ACC</span><b id="accTxt">0.00%</b></div>
+          <div class="pill"><span>HIT</span><b id="hitTxt">0</b></div>
+          <div class="pill"><span>MISS</span><b id="missTxt">0</b></div>
+        </div>
+      </div>
+
+      <!-- 타임라인 에디터 카드 -->
+      <div class="card editorCard">
+        <div class="editorBar">
+          <div class="editorModeBtns">
+            <button id="modePlayBtn">Play 모드</button>
+            <button id="modeEditBtn" class="btn2">Edit 모드</button>
+          </div>
+          <div class="editorSliders">
+            <label for="viewDurRange">뷰 길이(s)</label>
+            <input id="viewDurRange" type="range" min="5" max="40" value="20" />
+            <label for="viewStartRange">스크롤</label>
+            <input id="viewStartRange" type="range" min="0" max="1000" value="0" />
+          </div>
+        </div>
+        <canvas id="editorCanvas"></canvas>
+        <div class="editorBottom">
+          <div class="editorBottomLeft">
+            <button id="generateEasyBtn" class="btn2">Easy 채보 자동 생성</button>
+            <button id="clearChartBtn" class="btn2">전체 삭제</button>
+          </div>
+          <div class="tiny">
+            Edit 모드: 클릭=노트 생성/삭제, 드래그=롱노트, Alt+클릭=해당 시점으로 이동
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+    <script src="game.js"></script>
+</body>
+</html>
+
