@@ -46,10 +46,44 @@
     }
     .hud{display:flex; gap:10px; flex-wrap:wrap; margin-top:10px}
 
-    /* 왼쪽: 3버튼만 */
+    /* 왼쪽: 버튼 + 설정 */
     .leftOnly{display:flex; flex-direction:column; gap:12px;}
     .leftOnly .onlyBtns{display:flex; gap:10px; flex-wrap:wrap;}
-    .hideLeftExtras{display:none !important;}
+    .leftSettings{
+      border-radius:12px;
+      border:1px solid rgba(148,163,184,.22);
+      background: rgba(15,23,42,.45);
+      padding:10px;
+      display:flex;
+      flex-direction:column;
+      gap:8px;
+    }
+    .settingsTitle{font-size:12px; font-weight:900; color: rgba(229,231,235,.85); letter-spacing:.8px;}
+    .settingsGrid{
+      display:grid;
+      grid-template-columns: 1fr 1fr;
+      gap:8px 10px;
+    }
+    .settingsGrid label{
+      display:flex;
+      flex-direction:column;
+      gap:6px;
+      font-size:11px;
+      color: rgba(229,231,235,.75);
+      font-weight:700;
+    }
+    .settingsGrid input{
+      border-radius:10px;
+      border:1px solid rgba(148,163,184,.25);
+      background: rgba(2,6,23,.6);
+      color: var(--text);
+      padding:8px 10px;
+      font-weight:800;
+    }
+    .settingsHint{
+      font-size:11px;
+      color: rgba(229,231,235,.55);
+    }
 
     .stage{display:flex; flex-direction:column; gap:12px;}
 

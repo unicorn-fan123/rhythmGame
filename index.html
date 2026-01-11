@@ -18,15 +18,23 @@
         <button class="btn2" id="restartBtn">Restart</button>
       </div>
 
-      <!-- 숨겨진 기본값들(난이도/판정 등) -->
-      <div class="hideLeftExtras">
-        <!-- 속도 낮춤(쉬움) -->
-        <input id="speed" type="number" min="200" max="2400" value="620" />
-        <!-- 판정 넉넉하게 -->
-        <input id="wPerfect" type="number" value="85" />
-        <input id="wGreat" type="number" value="150" />
-        <input id="wGood" type="number" value="220" />
-        <input id="wMiss" type="number" value="320" />
+      <div class="leftSettings">
+        <div class="settingsTitle">판정/싱크 설정</div>
+        <div class="settingsGrid">
+          <label>
+            노트 속도
+            <input id="speed" type="number" min="200" max="2400" value="620" />
+          </label>
+          <label>
+            싱크(ms)
+            <input id="syncOffset" type="number" min="-500" max="500" value="0" step="1" />
+          </label>
+          <input id="wPerfect" type="hidden" value="85" />
+          <input id="wGreat" type="hidden" value="150" />
+          <input id="wGood" type="hidden" value="220" />
+          <input id="wMiss" type="hidden" value="320" />
+        </div>
+        <div class="settingsHint">싱크는 +값이면 노트가 조금 늦게 판정돼요.</div>
       </div>
 
       <div class="sub">

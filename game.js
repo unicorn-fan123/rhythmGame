@@ -135,6 +135,7 @@
     let songLength = DEMO_END; // 실제 길이는 onReady에서 갱신
 
     function getSpeed(){ return Number(document.getElementById('speed')?.value || 620); }
+    function getSyncOffsetMs(){ return Number(document.getElementById('syncOffset')?.value || 0); }
     function windowsMs(){
       return {
         p: Number(document.getElementById('wPerfect')?.value ||  85),
@@ -143,7 +144,11 @@
         m: Number(document.getElementById('wMiss')?.value    || 320),
       };
     }
-    function nowTime(){ return (player?.getCurrentTime) ? player.getCurrentTime() : null; }
+    function nowTime(){
+      if(!player?.getCurrentTime) return null;
+      const t = player.getCurrentTime();
+      return t + (getSyncOffsetMs() / 1000);
+    }
     function round4(x){ return Number(x.toFixed(4)); }
 
     function laneColorHex(lane){
